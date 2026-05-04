@@ -1,4 +1,8 @@
-# AI Transformation Command Center
+AI Transformation Command Center
+A working prototype of the tool an AI Transformation Manager would use on day one. Built to answer the question every financial services executive is asking right now: "How is our AI transformation actually going?"
+This dashboard gives a single source of truth across six business lines — scoring AI readiness before deployment, tracking adoption health after rollout, measuring operational ROI, and flagging at-risk implementations before they become failures. It closes with an automated executive PDF report designed for board-level communication.
+Built with: Python · Pandas · Streamlit · Plotly · FPDF2
+Demonstrates: AI transformation strategy · Change management thinking · Data-driven decision making · Executive reporting · Financial services domain expertise# AI Transformation Command Center
 
 A portfolio project demonstrating AI transformation leadership capabilities
 in a financial services context.
