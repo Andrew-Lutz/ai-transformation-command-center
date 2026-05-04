@@ -1,7 +1,7 @@
 # app.py
 # AI Transformation Command Center
 # A portfolio project demonstrating AI transformation leadership capabilities
-# Built for: Senior AI Transformation Manager role — Financial Services context
+# Built for: Senior AI Transformation Manager role - Financial Services context
 #
 # HOW TO RUN:
 #   1. Open this folder in VS Code
@@ -91,7 +91,7 @@ st.markdown("""
 """, unsafe_allow_html=True)
 
 # ── Load All Data ─────────────────────────────────────────────────────────────
-# Load once at the top — Streamlit re-runs the whole script on interaction,
+# Load once at the top - Streamlit re-runs the whole script on interaction,
 # so keeping data loading at the top keeps everything in sync.
 readiness_df = get_readiness_data()
 adoption_df  = get_adoption_data()
@@ -105,7 +105,7 @@ with st.sidebar:
     st.markdown("## ⚡ Command Center")
     st.markdown("---")
 
-    # Navigation — controls which section is shown in the main area
+    # Navigation - controls which section is shown in the main area
     page = st.radio(
         "Navigate",
         options=[
@@ -121,7 +121,7 @@ with st.sidebar:
 
     st.markdown("---")
 
-    # Business line filter — applies to relevant charts
+    # Business line filter - applies to relevant charts
     st.markdown("**Filter by Business Line**")
     all_lines = readiness_df["Business Line"].tolist()
     selected_lines = st.multiselect(
@@ -204,7 +204,7 @@ if page == "Executive Summary":
     with col_left:
         st.markdown('<p class="section-header">Adoption Trend by Business Line</p>', unsafe_allow_html=True)
 
-        # Line chart — shows quarterly adoption rate per business line
+        # Line chart - shows quarterly adoption rate per business line
         fig_trend = px.line(
             t_df,
             x="Quarter",
@@ -226,7 +226,7 @@ if page == "Executive Summary":
     with col_right:
         st.markdown('<p class="section-header">Overall Readiness by Business Line</p>', unsafe_allow_html=True)
 
-        # Horizontal bar chart — shows overall readiness score per line
+        # Horizontal bar chart - shows overall readiness score per line
         fig_ready = px.bar(
             r_df.sort_values("Overall Score"),
             x="Overall Score",
@@ -304,7 +304,7 @@ elif page == "AI Readiness":
     with col_left:
         st.markdown('<p class="section-header">Readiness Scores by Dimension</p>', unsafe_allow_html=True)
 
-        # Radar / spider chart — ideal for multi-dimension scoring
+        # Radar / spider chart - ideal for multi-dimension scoring
         categories = ["Data Quality", "Process Maturity", "Change Appetite", "Tech Infrastructure"]
 
         fig_radar = go.Figure()
@@ -361,7 +361,7 @@ elif page == "AI Readiness":
     st.markdown("---")
     st.info(
         "💡 **Transformation Insight**: Business lines scoring below 70 in Change Appetite "
-        "require a dedicated change management track before tool deployment — technical readiness "
+        "require a dedicated change management track before tool deployment - technical readiness "
         "alone does not predict successful adoption."
     )
 
@@ -392,7 +392,7 @@ elif page == "Tool Adoption":
     with col_left:
         st.markdown('<p class="section-header">Adoption Rate by Tool & Business Line</p>', unsafe_allow_html=True)
 
-        # Heatmap — great for showing adoption rate across two dimensions
+        # Heatmap - great for showing adoption rate across two dimensions
         pivot = deployed_only.pivot_table(
             index="Business Line",
             columns="AI Tool",
@@ -418,7 +418,7 @@ elif page == "Tool Adoption":
     with col_right:
         st.markdown('<p class="section-header">Staff Satisfaction by Tool</p>', unsafe_allow_html=True)
 
-        # Average satisfaction score per tool — bar chart
+        # Average satisfaction score per tool - bar chart
         sat = (
             deployed_only.groupby("AI Tool")["Satisfaction (1-5)"]
             .mean()
@@ -481,7 +481,7 @@ elif page == "ROI & Efficiency":
     with col_left:
         st.markdown('<p class="section-header">Handle Time & Error Rate Reduction</p>', unsafe_allow_html=True)
 
-        # Grouped bar chart — shows two metrics side by side per business line
+        # Grouped bar chart - shows two metrics side by side per business line
         fig_ops = go.Figure()
         fig_ops.add_trace(go.Bar(
             name="Handle Time Reduction (%)",
@@ -508,7 +508,7 @@ elif page == "ROI & Efficiency":
     with col_right:
         st.markdown('<p class="section-header">ROI Score by Business Line</p>', unsafe_allow_html=True)
 
-        # Scatter plot — ROI score vs cost savings, bubble size = capacity freed
+        # Scatter plot - ROI score vs cost savings, bubble size = capacity freed
         fig_scatter = px.scatter(
             roi,
             x="Cost Savings ($K/month)",
@@ -531,7 +531,7 @@ elif page == "ROI & Efficiency":
 
     st.info(
         "💡 **Transformation Insight**: High capacity-freed figures indicate successful "
-        "automation of repetitive tasks — this is the primary lever for reinvesting staff "
+        "automation of repetitive tasks - this is the primary lever for reinvesting staff "
         "time into advisory and complex judgment work."
     )
 
@@ -559,9 +559,9 @@ elif page == "Adoption Health":
     with col2:
         st.metric("🔴 High Risk", high, delta="Adoption < 30%", delta_color="inverse")
     with col3:
-        st.metric("🟠 Medium Risk", medium, delta="Adoption 30–40%", delta_color="inverse")
+        st.metric("🟠 Medium Risk", medium, delta="Adoption 30-40%", delta_color="inverse")
     with col4:
-        st.metric("🟡 Watch", watch, delta="Adoption 40–50%", delta_color="off")
+        st.metric("🟡 Watch", watch, delta="Adoption 40-50%", delta_color="off")
 
     st.markdown("<br>", unsafe_allow_html=True)
 
@@ -613,7 +613,7 @@ elif page == "Adoption Health":
         )
         st.plotly_chart(fig_hist, use_container_width=True)
 
-    st.markdown('<p class="section-header">Flagged Deployments — Action Required</p>', unsafe_allow_html=True)
+    st.markdown('<p class="section-header">Flagged Deployments - Action Required</p>', unsafe_allow_html=True)
 
     if not h_df.empty:
         st.dataframe(
@@ -627,7 +627,7 @@ elif page == "Adoption Health":
 
     st.info(
         "💡 **Transformation Insight**: Low adoption in a deployed tool is rarely a technology "
-        "problem — it is almost always a change management, training, or workflow integration "
+        "problem - it is almost always a change management, training, or workflow integration "
         "problem. Each flagged row represents an intervention opportunity."
     )
 
@@ -664,7 +664,7 @@ elif page == "Export Report":
     st.markdown("---")
 
     # ── PDF Generation ────────────────────────────────────────────────────────
-    # FPDF2 builds the PDF programmatically — each method adds an element
+    # FPDF2 builds the PDF programmatically - each method adds an element
     def generate_pdf() -> bytes:
         pdf = FPDF()
         pdf.set_auto_page_break(auto=True, margin=15)
@@ -679,7 +679,7 @@ elif page == "Export Report":
         pdf.cell(0, 10, "AI Transformation Command Center", ln=True, align="C")
         pdf.set_font("Helvetica", "", 11)
         pdf.set_text_color(180, 180, 200)
-        pdf.cell(0, 8, "Executive Summary Report — Financial Services", ln=True, align="C")
+        pdf.cell(0, 8, "Executive Summary Report - Financial Services", ln=True, align="C")
         pdf.set_text_color(120, 120, 140)
         pdf.cell(0, 6, f"Generated: {datetime.now().strftime('%B %d, %Y')}", ln=True, align="C")
         pdf.ln(12)
@@ -693,13 +693,18 @@ elif page == "Export Report":
             pdf.set_text_color(50, 50, 50)
             pdf.ln(2)
 
+        def sanitize(text: str) -> str:
+            # Helvetica does not support em dashes or other special characters
+            # Replace them with plain ASCII equivalents before writing to PDF
+            return str(text).replace("\u2014", "-").replace("\u2013", "-").replace("\u2018", "'").replace("\u2019", "'")
+
         def row(label: str, value: str):
             pdf.set_font("Helvetica", "", 10)
             pdf.set_text_color(60, 60, 80)
-            pdf.cell(80, 7, label)
+            pdf.cell(80, 7, sanitize(label))
             pdf.set_font("Helvetica", "B", 10)
             pdf.set_text_color(30, 30, 50)
-            pdf.cell(0, 7, value, ln=True)
+            pdf.cell(0, 7, sanitize(value), ln=True)
 
         # ── KPIs ───────────────────────────────────────────────────────────
         section("Executive KPIs")
@@ -714,7 +719,7 @@ elif page == "Export Report":
         # ── Readiness Scores ───────────────────────────────────────────────
         section("AI Readiness by Business Line")
         for _, row_data in readiness_df.sort_values("Overall Score", ascending=False).iterrows():
-            row(row_data["Business Line"], f"Overall: {row_data['Overall Score']} — Tier: {row_data['Tier']}")
+            row(row_data["Business Line"], f"Overall: {row_data['Overall Score']} - Tier: {row_data['Tier']}")
         pdf.ln(6)
 
         # ── ROI Summary ────────────────────────────────────────────────────
@@ -733,7 +738,7 @@ elif page == "Export Report":
         if not health_df.empty:
             for _, row_data in health_df.iterrows():
                 row(
-                    f"{row_data['Business Line']} — {row_data['AI Tool']}",
+                    f"{row_data['Business Line']} - {row_data['AI Tool']}",
                     f"Adoption: {row_data['Adoption Rate (%)']}% | Risk: {row_data['Risk Level']}"
                 )
         else:
@@ -747,13 +752,13 @@ elif page == "Export Report":
         insights = [
             "Business lines below 70 in Change Appetite require a dedicated change management track.",
             "Low adoption in deployed tools signals a change management or training gap, not a technology failure.",
-            "High capacity-freed metrics indicate successful automation — reinvest that time in advisory work.",
+            "High capacity-freed metrics indicate successful automation - reinvest that time in advisory work.",
             "Prioritize readiness interventions in Commercial Lending before expanding tool deployment.",
         ]
         pdf.set_font("Helvetica", "", 10)
         pdf.set_text_color(60, 60, 80)
         for insight in insights:
-            pdf.multi_cell(0, 6, f"• {insight}")
+            pdf.multi_cell(0, 6, f"- {insight}")
             pdf.ln(1)
 
         # Return as bytes for Streamlit download button
@@ -775,6 +780,6 @@ elif page == "Export Report":
     st.markdown("---")
     st.info(
         "💡 **Portfolio tip**: Use this PDF export in interviews to show you can produce "
-        "board-ready reporting automatically — not just build dashboards, but close the "
+        "board-ready reporting automatically - not just build dashboards, but close the "
         "loop with executive deliverables."
     )
