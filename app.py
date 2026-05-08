@@ -782,4 +782,8 @@ elif page == "Export Report":
         "💡 **Portfolio tip**: Use this PDF export in interviews to show you can produce "
         "board-ready reporting automatically - not just build dashboards, but close the "
         "loop with executive deliverables."
+<<<<<<< HEAD
     )
+=======
+    )
+>>>>>>> 2bb61e55edb362e69fb0e49e966a5a84b56527a5
